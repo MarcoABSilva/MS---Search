@@ -45,3 +45,6 @@ Click any result to zoom directly onto that node.
 ## 🤝 Contributing
 Found a bug or have a feature idea? Feel free to open an issue or send a pull request!
 
+## Special thanks for 
+Danilo de Lucio - Forever grateful for inspiring me to learn Python and always sharing knowledge.
+https://danilodelucio.com/
