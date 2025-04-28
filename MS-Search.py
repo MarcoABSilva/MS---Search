@@ -72,7 +72,7 @@ class Table_List(QtCore.QAbstractTableModel):
         self.endResetModel()
 
 class NodeSearchTool(QDialog):
-    #searching and focusing nodes in the Nuke Node Graph
+    #searching and focusing nodes in nuke node graph
     def __init__(self):
         super(NodeSearchTool, self).__init__()
         self.setWindowTitle("MS - Search")
@@ -89,7 +89,6 @@ class NodeSearchTool(QDialog):
         except:
             self.resize(500, 400)
 
-        # Layout
         layout = QVBoxLayout(self)
 
         # Search field
