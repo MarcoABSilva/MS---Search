@@ -2,11 +2,8 @@
 
 A lightweight Nuke panel for quickly finding and zooming to nodes by name or type, with live filtering and a list.
 
-![image](https://github.com/user-attachments/assets/bbd19849-84b5-4aa7-91f3-6477d583e43d)
+![image](https://github.com/user-attachments/assets/8571236a-50ba-45ca-87aa-6e3b44cfd1ce)
 
-![image](https://github.com/user-attachments/assets/454efc73-fc02-40c1-96e1-cb3ba69fd7f6)
-
-![image](https://github.com/user-attachments/assets/dc034206-fe6c-47c6-ad5a-1f8f4d5d5396)
 
 ---
 
