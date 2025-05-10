@@ -158,5 +158,3 @@ def show_search_tool():
         pass
     _search_tool = NodeSearchTool()
     _search_tool.show()
-
-show_search_tool()
