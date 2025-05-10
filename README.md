@@ -1,9 +1,8 @@
 # MS_Search
 
-A lightweight Nuke panel for quickly finding and zooming to nodes by name or type, with live filtering and a list.
+A Nuke panel for quickly finding and zooming to nodes by name or type, with live filtering and a list.
 
-![image](https://github.com/user-attachments/assets/8571236a-50ba-45ca-87aa-6e3b44cfd1ce)
-
+![MS - Search](https://github.com/user-attachments/assets/1f3837e9-db36-42e6-abe9-b1c89f83a0c5)
 
 ---
 
