@@ -1,6 +1,7 @@
+#Version - 1.0.2
+
 import nuke
 import os
-
 
 def nk_version():
     #Return QtCore, QtWidgets, and QtGui modules compatible with the current Nuke version.
@@ -55,10 +56,12 @@ class Table_List(QtCore.QAbstractTableModel):
             except:
                 return ""
         elif col == 2:
+            label = node['label']
             try:
-                return node['label'].value().strip()
-            except:
-                return ""
+                text = label.evaluate().strip()
+            except Exception:
+                text = label.value().strip()
+            return text
         return None
 
     def headerData(self, section, orientation, role):
@@ -89,7 +92,7 @@ class NodeSearchTool(QDialog):
         except:
             self.resize(500, 400)
 
-        # Layout
+        #Layout
         layout = QVBoxLayout(self)
 
         # Search field
@@ -97,24 +100,37 @@ class NodeSearchTool(QDialog):
         self.search_field.setPlaceholderText("Enter node name or type...")
         layout.addWidget(self.search_field)
 
-        #List
+        #result list
         self.table = QTableView()
         self.model = Table_List(self)
         self.table.setModel(self.model)
+
         header = self.table.horizontalHeader()
-        header.setSectionResizeMode(0, QHeaderView.Stretch)
+        header.setSectionResizeMode(0, QHeaderView.Interactive)
         header.setSectionResizeMode(1, QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QHeaderView.ResizeToContents)
+        header.setStretchLastSection(True)
+
+        #column size
+        self.table.setColumnWidth(0, 250)  #Node/Type field
+        self.table.setColumnWidth(1, 150)  #Read name field
+        self.table.setColumnWidth(2, 150)  #Label field
+
+        #just visual stuff
+        self.table.setAlternatingRowColors(True)
+        self.table.setShowGrid(False)
+        self.table.verticalHeader().setVisible(False)
         self.table.setSelectionBehavior(self.table.SelectRows)
+
         layout.addWidget(self.table)
 
-        # small delay for search bar
+        #add a small lag input for the search bar
         self._timer = QTimer(self, singleShot=True)
         self._timer.setInterval(200)
         self.search_field.textChanged.connect(self._timer.start)
         self._timer.timeout.connect(self._on_search)
 
-        #zoooom
+        #Zooooooooom
         self.table.clicked.connect(self._on_focus)
         self.search_field.setFocus()
 
@@ -126,7 +142,9 @@ class NodeSearchTool(QDialog):
         matched = []
         for node in nuke.allNodes():
             try:
-                if term in node.name().lower() or term in node.Class().lower():
+                name = node.name().lower()
+                cls = node.Class().lower()
+                if term in name or term in cls:
                     matched.append(node)
             except:
                 pass
